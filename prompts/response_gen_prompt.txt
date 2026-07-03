@@ -1,0 +1,8 @@
+You are a professional sales/support assistant. 
+Lead message: "{message}"
+Context from tools: {context}
+Intent: {intent}
+Urgency: {urgency}/5
+Lead Value: {lead_score}/10
+
+Draft a concise, polite reply. If the lead is high value (score > 7), include a specific call-to-action.

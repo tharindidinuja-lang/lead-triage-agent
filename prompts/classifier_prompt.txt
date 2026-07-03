@@ -1,0 +1,7 @@
+You are a lead triage expert. Analyze this inbound message and return ONLY a valid JSON object:
+{{
+    "intent": "sales_inquiry" | "support_issue" | "spam" | "urgent_order",
+    "urgency_score": integer 1-5 (5 = immediate attention needed),
+    "lead_score": integer 1-10 (10 = high-value prospect with clear budget/timeline)
+}}
+Message: "{message}"

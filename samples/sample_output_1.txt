@@ -1,0 +1,33 @@
+--- SAMPLE 1: Sample 1: High Urgency + High Risk ---
+Input: I'm the CTO of FinTech Corp. Your platform crashed during our pilot. We have 200 users waiting. Fix this NOW or we cancel our $50k contract.
+
+--- [1] CLASSIFIER NODE ---
+  Intent: urgent_order, Urgency: 5, Lead Score: 10
+
+--- [2] PLANNER NODE (LLM-powered) ---
+  LLM Generated Plan: ['search_kb', 'lookup_crm', 'draft_response']
+
+--- [3] TOOL DECISION NODE ---
+  Tool Calls: [{'name': 'search_kb', 'args': {'query': "I'm the CTO of FinTech Corp. Your platform crashed during our pilot. We have 200 users waiting. Fix this NOW or we cancel our $50k contract."}}, {'name': 'lookup_crm', 'args': {'email': 'cto@fintech.com'}}]
+
+--- [4] TOOL EXECUTION NODE ---
+  Tool Results: [{'tool': 'search_kb', 'result': "I couldn't find that in our knowledge base."}, {'tool': 'lookup_crm', 'result': {'tier': 'Enterprise', 'past_issues': 2, 'status': 'active'}}]
+
+--- [5] RESPONSE GENERATION NODE ---
+  Draft: We understand your frustration, and we're truly sorry for the disruption. Our engineering team has been alerted and is actively investigating the issue. Please rest assured that resolving this is our top priority...
+
+--- [6] VALIDATION NODE ---
+  ✅ Validation Passed.
+
+--- [7] RISK CHECK NODE ---
+  Risk Level: high
+
+--- [8] HUMAN REVIEW ROUTING ---
+⚠️  HUMAN REVIEW REQUIRED ⚠️
+  Original Lead: I'm the CTO of FinTech Corp. Your platform crashed during our pilot. We have 200 users waiting. Fix this NOW or we cancel our $50k contract.
+  AI Draft Reply: We understand your frustration...
+  Risk Level: high
+  >> ACTION: Escalating to manager (AI blocked).
+
+Final Action: human_escalate
+Final Reply: [BLOCKED - Human Escalation Needed]...

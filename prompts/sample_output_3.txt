@@ -1,0 +1,33 @@
+--- SAMPLE 3: Sample 3: Strong Sales Lead ---
+Input: Hi, we're a team of 15 designers looking for a yearly subscription. Need collaborative editing. Please send us a custom quote and a demo link.
+
+--- [1] CLASSIFIER NODE ---
+  Intent: sales_inquiry, Urgency: 3, Lead Score: 9
+
+--- [2] PLANNER NODE (LLM-powered) ---
+  LLM Generated Plan: ['lookup_crm', 'draft_response']
+
+--- [3] TOOL DECISION NODE ---
+  Tool Calls: [{'name': 'lookup_crm', 'args': {'email': 'team15@design.com'}}]
+
+--- [4] TOOL EXECUTION NODE ---
+  Tool Results: [{'tool': 'lookup_crm', 'result': {'tier': 'SMB', 'past_issues': 0, 'status': 'lead'}}]
+
+--- [5] RESPONSE GENERATION NODE ---
+  Draft: Hi team of 15! Thanks for reaching out. Since you're looking for a yearly subscription with collaborative editing, we'd love to offer you a tailored demo. I'll have our sales specialist send over a custom quote shortly. When is a good time for a quick 15-min call to walk you through our collaborative features?
+
+--- [6] VALIDATION NODE ---
+  ✅ Validation Passed.
+
+--- [7] RISK CHECK NODE ---
+  Risk Level: medium
+
+--- [8] HUMAN REVIEW ROUTING ---
+⚠️  HUMAN REVIEW REQUIRED ⚠️
+  Original Lead: Hi, we're a team of 15 designers looking for a yearly subscription...
+  AI Draft Reply: Hi team of 15!...
+  Risk Level: medium
+  >> ACTION: Human reviewer approved draft.
+
+Final Action: auto_reply
+Final Reply: Hi team of 15! Thanks for reaching out...

@@ -1,0 +1,26 @@
+--- SAMPLE 2: Sample 2: FAQ / Low Priority ---
+Input: Hi, what are your office hours on weekends?
+
+--- [1] CLASSIFIER NODE ---
+  Intent: support_issue, Urgency: 1, Lead Score: 2
+
+--- [2] PLANNER NODE (LLM-powered) ---
+  LLM Generated Plan: ['search_kb', 'draft_response']
+
+--- [3] TOOL DECISION NODE ---
+  Tool Calls: [{'name': 'search_kb', 'args': {'query': 'Hi, what are your office hours on weekends?'}}]
+
+--- [4] TOOL EXECUTION NODE ---
+  Tool Results: [{'tool': 'search_kb', 'result': 'Sat 10 AM – 4 PM, closed Sundays.'}]
+
+--- [5] RESPONSE GENERATION NODE ---
+  Draft: Our weekend hours are Saturday 10 AM – 4 PM. We're closed on Sundays. Let us know if you need any further assistance!
+
+--- [6] VALIDATION NODE ---
+  ✅ Validation Passed.
+
+--- [7] RISK CHECK NODE ---
+  Risk Level: low
+
+Final Action: auto_reply
+Final Reply: Our weekend hours are Saturday 10 AM – 4 PM. We're closed on Sundays. Let us know if you need any further assistance!...
