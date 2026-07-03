@@ -14,43 +14,27 @@ An intelligent AI agent that triages incoming sales leads and customer messages 
 ## 📌 Table of Contents
 - [Overview](#overview)
 - [Architecture](#architecture)
-- [Key Features](#key-features)
-- [Tech Stack](#tech-stack)
-- [Installation & Setup](#installation--setup)
 
----
-
-# 🤖 AI Lead & Message Triage Agent
-
-> **Submitted for:** Catalist Media - Agent Prototyping Intern Builder Challenge
-
----
-
-## 📌 Table of Contents
-- [Overview](#overview)
-- [Architecture](#architecture)
 
 ---
 
 ## 📖 Overview
 
-> [!NOTE]
-> **What does this agent do?**  
-> Small businesses struggle to manage leads scattered across WhatsApp, Instagram, email, and web forms.  
-> This AI agent automatically:
-> - **Classifies** intent (Sales, Support, Spam, Urgent).
-> - **Scores** urgency (1-5) and lead value (1-10).
-> - **Searches** internal KB or the web (Tavily) for answers.
-> - **Validates** drafts for PII (phone numbers) and hallucinations.
-> - **Routes** high-risk messages (cancellations, refunds) to human review.
+Small businesses struggle to manage leads scattered across multiple channels. This agent solves that by:
+
+1. **Classifying** incoming messages (Sales, Support, Spam, Urgent).
+2. **Scoring** urgency (1-5) and lead value (1-10).
+3. **Searching** internal knowledge bases or the web (via Tavily) for answers.
+4. **Looking up** lead history in a mock CRM.
+5. **Drafting** intelligent replies using Google Gemini (or any LLM).
+6. **Validating** drafts for PII (phone numbers, emails) and factual hallucinations.
+7. **Routing** high-risk messages (e.g., "cancel", "refund", high-value quotes) to human review.
 
 ---
 
 ## 🏗️ Architecture
 
-<details>
-<summary><b>Click to expand the LangGraph workflow diagram</b></summary>
-<br>
+The agent is built as a directed graph using **LangGraph**:
 
 ```mermaid
 flowchart TD
@@ -66,4 +50,3 @@ flowchart TD
     H -->|Low Risk| J[Auto Reply]
     H -->|Medium/High Risk| I
     I --> K[Escalate / Approve]
----
