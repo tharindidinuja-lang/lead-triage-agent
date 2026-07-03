@@ -17,11 +17,6 @@ An intelligent AI agent that triages incoming sales leads and customer messages 
 - [Key Features](#key-features)
 - [Tech Stack](#tech-stack)
 - [Installation & Setup](#installation--setup)
-- [Running the Agent](#running-the-agent)
-- [Testing](#testing)
-- [Sample Inputs & Outputs](#sample-inputs--outputs)
-- [Deployment](#deployment)
-- [Author](#author)
 
 ---
 
@@ -57,3 +52,31 @@ flowchart TD
     H -->|Low Risk| J[Auto Reply]
     H -->|Medium/High Risk| I
     I --> K[Escalate / Approve]
+
+## ✨ Key Features
+- **Multi-Channel Ready**: Handles WhatsApp, Email, Web Form style inputs.
+- **Real-Time Web Search**: Integrates with Tavily API for up-to-date answers.
+- **Hallucination Detection**: Validates AI drafts against tool results.
+- **PII Protection**: Automatically redacts or blocks phone numbers and credit card details.
+- **Human-in-the-Loop**: Blocks high-risk messages (cancellations, refunds) and routes them to a manager.
+- **Interactive Web UI**: Built with Streamlit for easy testing.
+- **Comprehensive Tests**: `pytest` suite covering risk logic, validation, and tool execution.
+
+---
+## 🛠️ Tech Stack
+| Component | Technology |
+| :--- | :--- |
+| Agent Framework | LangGraph |
+| LLM Provider | Google Gemini (or OpenAI via config) |
+| Web Search | Tavily API |
+| Frontend | Streamlit |
+| Testing | Pytest |
+| Language | Python 3.9+ |
+
+---
+
+## 🔧 Installation & Setup
+### 1. Clone the Repository
+```bash
+git clone https://github.com/tharindidinuja-lang/lead-triage-agent.git
+cd lead-triage-agent
