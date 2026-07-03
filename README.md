@@ -20,23 +20,37 @@ An intelligent AI agent that triages incoming sales leads and customer messages 
 
 ---
 
+# 🤖 AI Lead & Message Triage Agent
+
+> **Submitted for:** Catalist Media - Agent Prototyping Intern Builder Challenge
+
+---
+
+## 📌 Table of Contents
+- [Overview](#overview)
+- [Architecture](#architecture)
+
+---
+
 ## 📖 Overview
 
-Small businesses struggle to manage leads scattered across multiple channels. This agent solves that by:
-
-1. **Classifying** incoming messages (Sales, Support, Spam, Urgent).
-2. **Scoring** urgency (1-5) and lead value (1-10).
-3. **Searching** internal knowledge bases or the web (via Tavily) for answers.
-4. **Looking up** lead history in a mock CRM.
-5. **Drafting** intelligent replies using Google Gemini (or any LLM).
-6. **Validating** drafts for PII (phone numbers, emails) and factual hallucinations.
-7. **Routing** high-risk messages (e.g., "cancel", "refund", high-value quotes) to human review.
+> [!NOTE]
+> **What does this agent do?**  
+> Small businesses struggle to manage leads scattered across WhatsApp, Instagram, email, and web forms.  
+> This AI agent automatically:
+> - **Classifies** intent (Sales, Support, Spam, Urgent).
+> - **Scores** urgency (1-5) and lead value (1-10).
+> - **Searches** internal KB or the web (Tavily) for answers.
+> - **Validates** drafts for PII (phone numbers) and hallucinations.
+> - **Routes** high-risk messages (cancellations, refunds) to human review.
 
 ---
 
 ## 🏗️ Architecture
 
-The agent is built as a directed graph using **LangGraph**:
+<details>
+<summary><b>Click to expand the LangGraph workflow diagram</b></summary>
+<br>
 
 ```mermaid
 flowchart TD
@@ -52,31 +66,4 @@ flowchart TD
     H -->|Low Risk| J[Auto Reply]
     H -->|Medium/High Risk| I
     I --> K[Escalate / Approve]
-
-## ✨ Key Features
-- **Multi-Channel Ready**: Handles WhatsApp, Email, Web Form style inputs.
-- **Real-Time Web Search**: Integrates with Tavily API for up-to-date answers.
-- **Hallucination Detection**: Validates AI drafts against tool results.
-- **PII Protection**: Automatically redacts or blocks phone numbers and credit card details.
-- **Human-in-the-Loop**: Blocks high-risk messages (cancellations, refunds) and routes them to a manager.
-- **Interactive Web UI**: Built with Streamlit for easy testing.
-- **Comprehensive Tests**: `pytest` suite covering risk logic, validation, and tool execution.
-
 ---
-## 🛠️ Tech Stack
-| Component | Technology |
-| :--- | :--- |
-| Agent Framework | LangGraph |
-| LLM Provider | Google Gemini (or OpenAI via config) |
-| Web Search | Tavily API |
-| Frontend | Streamlit |
-| Testing | Pytest |
-| Language | Python 3.9+ |
-
----
-
-## 🔧 Installation & Setup
-### 1. Clone the Repository
-```bash
-git clone https://github.com/tharindidinuja-lang/lead-triage-agent.git
-cd lead-triage-agent
